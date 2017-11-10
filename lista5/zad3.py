@@ -3,7 +3,7 @@ from random import *
 def only_one(L):
   K=[]
   for i in L:
-    if not (i in K):
+    if not i in K:
       K.append(i)
   return K
 

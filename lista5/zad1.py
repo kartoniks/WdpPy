@@ -23,6 +23,8 @@ def anCol(a,b):
     if mine > e:
       mine = e
   avg/=(b+1-a)
+  L.sort()
+  print(L)
   if len(L)%2 == 0:
     med = L[len(L)//2 -1] + L[len(L)//2]
   else:
