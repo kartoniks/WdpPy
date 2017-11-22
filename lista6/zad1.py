@@ -8,12 +8,14 @@ def kwadrat(bok):
   R = 0.5
   G = 0.5
   B = 0.5
+  pd()
   fillcolor((R,G,B))
   begin_fill()
   for i in range(4):
     fd(bok)
     rt(90)
   end_fill()
+  pu()
 
 def rzad(napis, bok):
   for i in napis:
