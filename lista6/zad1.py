@@ -23,19 +23,7 @@ def rzad(napis, bok):
       kwadrat(bok)
     fd(bok)
   fd(bok)
-'''
-BOK = 30
-for j in range(10):
-  for i in range(10):
-    kwadrat(BOK)
-    fd(BOK)
-  up()
-  bk(10*BOK)
-  left(90)
-  fd(BOK)
-  rt(90)
-  down()
-'''
+
 def wypisz(n):
   s=str(n)
   L=[[0]*5 for i in range(len(s))]
