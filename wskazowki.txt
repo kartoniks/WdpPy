@@ -1,0 +1,2 @@
+napis.upper()
+napis.lower()

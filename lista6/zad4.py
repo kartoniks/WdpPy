@@ -13,4 +13,4 @@ def divid(s):
       p=p+q+1
   return L
 
-print(divid("  ala   ma  kota "))
+print(divid("  ala   ma  kota"))
