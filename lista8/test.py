@@ -23,7 +23,7 @@ def dopelnienie(ds, dw):
       dop[k]=dw[k]-ds[k]
   return dop
 
-wejscie="Jan Nowakowski"
+wejscie="Artur Derechowski"
 wejscie=wejscie.lower()
 wejscie=wejscie.replace(" ", "")
 imie=slownikuj(wejscie)
@@ -33,21 +33,25 @@ for w in open("slowa.txt"):
   if ukladalne(slownikuj(w),imie):
     kandydaci.append(w)
 
-print(len(kandydaci))
+#print(len(kandydaci))
 dobre=set()
 
 test={}
 for i in kandydaci:
-  test[tuple(slownikuj(i))] = i
+  s=slownikuj(i)
+  if tuple(s) not in test:
+    test[tuple(s)] = []
+  test[tuple(s)].append(i)
 for i in kandydaci:
   d = tuple(dopelnienie(slownikuj(i), imie))
-  if d in test and slownikuj(test[d]+i) == imie:
-    if test[d]<i:
-      dobre.add((test[d],i))
-    else:
-      dobre.add((i,test[d]))
+  if d in test and slownikuj(test[d][0]+i) == imie:
+    for j in range(len(test[d])):
+      if test[d][j]<i:
+        dobre.add((test[d][j],i))
+      else:
+        dobre.add((i,test[d][j]))
 
-print(test)
+print(dobre)
     
 '''
 for i in kandydaci:
