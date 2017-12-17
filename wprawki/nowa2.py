@@ -1,22 +1,29 @@
-s1 = input()
-s2 = input()
+from random import *
 
-def zle(s1,s2):
-  slow={}
-  for i in range(len(s1)):
-    if s1[i] in slow.keys() and slow[s1[i]] != s2[i]:
-      return True
-    slow[s1[i]] = s2[i]
-  return False
+n=10
+L=[randint(1,1000) for i in range(n)]
 
-A={}
-if s1 == s2:
-  print("NONE")
-elif zle(s1,s2):
-  print("CAN'T")
-else:
-  for i in range(len(s1)):
-    if s1[i] != s2[i]:
-      A[s1[i]]=s2[i]
-  for k,v in A.items():
-    print(k+"->"+v)
+def quicksort(L):
+  if len(L)<=1: return L
+  piv = L[0]
+  L1 = [i for i in L[1:] if i<piv]
+  L2 = [i for i in L[1:] if i>=piv]
+  #print(L, L1, L2)
+  return quicksort(L1) + [piv] + quicksort(L2)
+
+def partition(L):
+  maks = len(L) - 1
+  print(L[maks])
+  sp = 0
+  for i in range(len(L)-1):
+    if L[i]<maks:
+      sp+=1
+    else:
+      temp = L[i]
+      L[i] = L[sp]
+      L[sp] = temp
+  return L
+
+print(L)
+L=partition(L)
+print(L)
