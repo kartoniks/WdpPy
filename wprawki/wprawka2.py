@@ -1,33 +1,35 @@
-import sys
-key = input()
-val = input()
+L=[9,1,2,3,4,5,0,6,7,8]
 
 
-candidate = [[] for i in range(26)]
+maxl=0
+begi=0
+for i in range(len(L)):
+  last=L[i]
+  cand=0
+  for j in range(len(L)-i):
+    if L[i+j]>last:
+      cand+=1
+      last=L[i+j]
+  if cand>maxl:
+    maxl=cand
+    begi=i
 
-def check(candidate):
-  for i in range(26):
-    if len(candidate[i])>1:
-      print("CAN'T")
-      return True
-  #for i in range(26):
-  #  if len(candidate[i]) == 1 and candidate[i][0] != (chr(i+ord('A'))):
-  #    print(chr(i+ord('A'))+"->"+candidate[i][0])
-
-for i in range(len(key)):
-  #if key[i] != val[i]:
-  if val[i] not in candidate[ord(key[i])-ord('A')]: 
-    candidate[ord(key[i])-ord('A')].append(val[i])
-
+print(L[begi], end='')
+last=begi
+for i in range(begi, len(L)):
+  if L[i]>last:
+    print(L[i],end='')
+  last=L[i]
     
-#for i in range(26):
-#  print(candidate[i])
-    
+  
 
-if key == val:
-  print("NONE")
-else:
-  if not check(candidate):
-    for i in range(len(key)):
-      if key[i] != val[i]:
-        print(key[i]+"->"+val[i])
+
+
+
+
+
+
+
+
+
+  
