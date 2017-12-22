@@ -41,12 +41,16 @@ def dodaj(s,d):
       d[a]=1
   return d
 
-def losuj(slowa):
+def losuj(slowa, pocz=""):
   dobre=[]
   d={}
-  w=slowa[randint(0,len(slowa)-1)]
-  d=dodaj(w,d)
-  dobre.append(w)
+  w=slowa[randint(0,len(slowa)-1)]  
+  if pocz == "":
+    d=dodaj(w,d)
+    dobre.append(w)
+  else:
+    d=dodaj(pocz,d)
+    dobre.append(pocz)  
   #print(d,w)
   while( slowa != [] ):
     slowa2=[]
@@ -63,6 +67,13 @@ def losuj(slowa):
   print(dobre)
   return d
 
+def suma_liter(w):
+  s = 1000
+  for l in w:
+    if l in trudne_litery:
+      s -= trudne_litery[l]
+  return s
+
 slowa=[]
 for w in open("slowa.txt"):
   w=w.strip().lower()
@@ -71,16 +82,23 @@ for w in open("slowa.txt"):
 print(len(slowa))
 trudne_litery = trudne(slowa)
 print(trudne_litery)
+#print(suma_liter("qaaaaaaaaaaaaa") )
+slowa = sorted(slowa, key = suma_liter)
+for i in range(10):
+  losuj(slowa, slowa[i])
 
-
-
-
-
-
-
-
-
-
+'''
+flegmatyczność
+afleksyjność
+frakcyjność
+grubiańskość
+bezpańskość
+fikcyjność
+frydmańskich
+bufońskich
+fechtowałbyś
+infolexach
+'''
 
 
 
