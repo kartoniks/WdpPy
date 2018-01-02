@@ -2,27 +2,31 @@ def lamiglowka(n):
   litery = set(n) - set("+-=*/ ")
   n = n.replace("=", "-")
   if len(litery) > 10:
-    return "Zbyt dużo różnych liter w podanej łamigłówce"
-  liczby = "0123456789"
-  def permutacje(L,x,Lw):
+    return None
+  cyfry = "0123456789"
+  def permutacje(L,x):
+    global count    
+    count += 1
     if len(L) == x:
-      slownik = dict(zip(litery,L))
-      napis = n
-      for i in range(len(napis)):
-        if napis[i] in slownik:
-          napis = napis.replace(napis[i],slownik[napis[i]])
-      for i in range(len(napis)):
-        if napis[i] == "0" and (i == 0 or napis[i-1] == " "):
-          break
-      if eval(napis) == 0:
-        Lw.append(slownik)
-        print(Lw)
-    elif not len(Lw):
-      for e in liczby:
+      slow = dict(zip(litery,L))
+      nap = n
+      for i in range(len(nap)):
+        if nap[i] in slow: 
+          nap = nap.replace(nap[i], slow[nap[i]])
+        if nap[i] == "0" and (i == 0 or nap[i-1] == " "):
+          return None
+      print(nap, count)
+      if eval(nap) == 0:
+        print(slow)
+        return slow
+    else:
+      for e in cyfry:
         L2 = L[:]
         if e not in L2:
           L2.append(e)
-          permutacje(L2,x,[])
-  permutacje([],len(litery),[])
+          permutacje(L2,x)
+  return permutacje([],len(litery))
 
-lamiglowka("ciacho + ciacho = nadwaga")
+
+count = 0
+print(lamiglowka("ciacho + ciacho = nadwaga"))
