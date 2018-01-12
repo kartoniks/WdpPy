@@ -26,7 +26,7 @@ def literowe(slowo, a=alfa):
       return False
   return True
 
-for w in open('slowa.txt'):
+for w in open('../lista9/slowa.txt'):
   w=w.strip()
   w=w.lower()
   if literowe(w):
